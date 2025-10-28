@@ -377,16 +377,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Project cards enhanced hover effects
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-15px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
+ const projectCards = document.querySelectorAll('.project-card');
+
+projectCards.forEach(card => {
+    const desc = card.querySelector('.project-desc');
+
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-15px) scale(1.02)';
+        if(desc) desc.style.color = '#fff'; // make description text white
     });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        if(desc) desc.style.color = ''; // reset to default color
+    });
+});
+
 
     // Experience cards enhanced hover effects
     const experienceCards = document.querySelectorAll('.experience-card');
